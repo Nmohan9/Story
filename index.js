@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 const { MongoClient, ObjectId } = require("mongodb");
 const { initializeApp } = require("firebase/app");
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } = require("firebase/auth");
@@ -23,6 +24,8 @@ const auth = getAuth(firebaseApp);
 
 // MongoDB setup
 const mongoUri = process.env.MONGO_URI; // Use environment variable or default to local MongoDB
+console.log("Mongo URI:", process.env.MONGO_URI);
+
 let dbClient;
 
 async function connectToDB() {
