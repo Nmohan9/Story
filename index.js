@@ -22,7 +22,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 
 // MongoDB setup
-const mongoUri = "mongodb://localhost:27017/storiesDB";
+const mongoUri = process.env.MONGO_URI; // Use environment variable or default to local MongoDB
 let dbClient;
 
 async function connectToDB() {
